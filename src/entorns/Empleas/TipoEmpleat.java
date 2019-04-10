@@ -1,15 +1,13 @@
 package entorns.Empleas;
 
-public class TipoEmpleats {
+public class TipoEmpleat {
 
-    private float salarioBase;
     private float ventasMes;
     private float horasExtra;
     private float salarioBruto;
     private float salarioNeto;
 
-    public TipoEmpleats(float salarioBase, float ventasMes, float horasExtra) {
-        this.salarioBase = salarioBase;
+    public TipoEmpleat( float ventasMes, float horasExtra) {
         this.ventasMes = ventasMes;
         this.horasExtra = horasExtra;
     }
@@ -17,9 +15,6 @@ public class TipoEmpleats {
     
     
     //Setters
-    public void setSalario(float salario){
-        salarioBase = salario;
-    }
     
     public void setVentasMes(float ventas){
         ventasMes = ventas;
@@ -39,9 +34,6 @@ public class TipoEmpleats {
     
     
     //Geters
-    public float getSalarioBase() {
-        return salarioBase;
-    }
 
     public float getVentasMes() {
         return ventasMes;
@@ -59,18 +51,5 @@ public class TipoEmpleats {
         return salarioNeto;
     }
     
-    //Method
-
-    public void CalcularSalarioBruto(){
-        setSalarioBruto(salarioBase);
-        
-        if(ventasMes>=1000 && ventasMes<1500)
-            setSalarioBruto(salarioBruto+100);
-        
-        else if(ventasMes>=1500)
-            setSalarioBruto(salarioBruto+200);
-        
-        
-    }
     
 }
