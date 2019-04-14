@@ -42,7 +42,7 @@ public class GroupArraysTest {
 
     }
     
-    //Entre en el segon bucle 
+    //No entre ha cap bucle
     @Test
     public void testGroupArrays4() {
         System.out.println("Cap Bucle");

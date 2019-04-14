@@ -1,6 +1,6 @@
 package entorns.Empleas;
 
-public class TipoEmpleat {
+public abstract class TipoEmpleat {
 
     private float ventasMes;
     private float horasExtra;

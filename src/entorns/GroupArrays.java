@@ -6,6 +6,7 @@ public class GroupArrays {
     public static int[] groupArrays(int[] array1, int[] array2){
         int[] res=new int[array1.length + array2.length];
         
+        
         for(int i=0;i<array1.length;i++)
             res[i] = array1[i];
         
@@ -28,4 +29,5 @@ public class GroupArrays {
             
         return array;
     }
+
 }

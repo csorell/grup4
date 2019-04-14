@@ -1,14 +1,12 @@
 package entorns.Empleas;
 
-import com.sun.jmx.snmp.BerException;
-
 public class AdministrarEmpleados {
     
-   public static float calcularSalarioBruto(TipoEmpleat e) throws BerException{
+   public static float calcularSalarioBruto(TipoEmpleat e) throws Exception{
        float salari = 0;
        
        if (e==null || e.getVentasMes()<0 || e.getHorasExtra()<0 )
-           throw new BerException();
+           throw new Exception();
        
        if(e instanceof Vendedor)
            salari = 1000;
@@ -25,7 +23,10 @@ public class AdministrarEmpleados {
        return salari;
    }
    
-   public static float calcularSalariNet(TipoEmpleat e){
+   public static float calcularSalariNet(TipoEmpleat e) throws Exception{
+       
+       if (e==null || e.getSalarioBruto()<0 )
+           throw new Exception();
        
        if(e.getSalarioBruto()>=1500)
            return (float) (e.getSalarioBruto() * 0.82);

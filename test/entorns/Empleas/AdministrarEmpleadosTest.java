@@ -120,7 +120,7 @@ public class AdministrarEmpleadosTest {
 
     // primer if
     @Test
-    public void testCalcularSalariNet() throws BerException {
+    public void testCalcularSalariNet() throws BerException, Exception {
         System.out.println("calcularSalariNet primer if");
         TipoEmpleat e = new Encargado(0,0);
         e.setSalarioBruto(1500);
@@ -131,7 +131,7 @@ public class AdministrarEmpleadosTest {
     
     // segon if
     @Test
-    public void testCalcularSalariNet2() throws BerException {
+    public void testCalcularSalariNet2() throws BerException, Exception {
         System.out.println("calcularSalariNet primer if");
         TipoEmpleat e = new Encargado(0,0);
         e.setSalarioBruto(1000);
@@ -142,7 +142,7 @@ public class AdministrarEmpleadosTest {
     
     // cap if
     @Test
-    public void testCalcularSalariNet3() throws BerException {
+    public void testCalcularSalariNet3() throws BerException, Exception {
         System.out.println("calcularSalariNet primer if");
         TipoEmpleat e = new Encargado(0,0);
         e.setSalarioBruto(500);
@@ -151,4 +151,64 @@ public class AdministrarEmpleadosTest {
         assertEquals(expResult, result, 0.0);
     }
     
+    
+    /*
+    Proves caixes negra
+    */
+    
+    
+    //Nombres gigants salari brut
+    @Test
+    public void testCalcularSalarioBrutoCaixaNegra() throws Exception {
+        System.out.println("Nombres gigants");
+        TipoEmpleat e = new Vendedor(12353136, 1345241);
+        float expResult = 26906020;
+        float result = AdministrarEmpleados.calcularSalarioBruto(e);
+        assertEquals(expResult, result, 0.0);
+    }
+    
+    //test nombres negatius salari brut
+    @Test(expected = Exception.class)
+    public void testCalcularSalarioBrutoCaixaNegra2() throws Exception {
+        System.out.println("Nombres negatius");
+        TipoEmpleat e = new Vendedor(-80, -105);
+        float expResult = 26906020;
+        float result = AdministrarEmpleados.calcularSalarioBruto(e);
+    }
+    
+     //test empleat null salari brut
+    @Test(expected = Exception.class)
+    public void testCalcularSalarioBrutoNull() throws Exception {
+        System.out.println("calcularSalarioBruto null");
+        TipoEmpleat e = null;
+        float result = AdministrarEmpleados.calcularSalarioBruto(e);
+    }
+    
+     //test empleat null salasi Net
+    @Test(expected = Exception.class)
+    public void testCalcularSalariNetNullCaixaNegra() throws Exception {
+        System.out.println("calcularSalarioNet null");
+        TipoEmpleat e = null;
+        float result = AdministrarEmpleados.calcularSalariNet(e);
+    }
+    
+     //test nombres negatius salari net
+    @Test(expected = Exception.class)
+    public void testCalcularSalarioNetCaixaNegra2() throws Exception {
+        System.out.println("Nombres negatius salari net");
+        TipoEmpleat e = new Vendedor(0,0);
+        e.setSalarioBruto(-1000);
+        float result = AdministrarEmpleados.calcularSalariNet(e);
+    }
+    
+    //Nombres gigants salari net
+    @Test
+    public void testCalcularSalarioNetCaixaNegra() throws Exception {
+        System.out.println("Nombres gigants salari net");
+        TipoEmpleat e = new Vendedor(0, 0);
+        e.setSalarioBruto(999999999);
+        float result = AdministrarEmpleados.calcularSalariNet(e);
+        float expResult = 819999999.18f;
+        assertEquals(expResult, result, 0.0);
+    }
 }
